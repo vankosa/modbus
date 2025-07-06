@@ -1,0 +1,60 @@
+- type: udp
+  host: 10.0.0.1
+  port: 8899
+  name: "Nova"
+  sensors:
+    - name: "Температура подачи"
+      unit_of_measurement: °C
+      slave: 1
+      address: 0
+      input_type: input
+      device_class: temperature
+      precision: 1
+      scale: 0.1
+    - name: "Скорость вентилятора текущая"
+      slave: 1
+      address: 1
+      input_type: input
+      precision: 1
+    - name: "Температура вытяжки"
+      unique_id: "OutFlowTemp"
+      unit_of_measurement: °C
+      slave: 1
+      address: 3
+      input_type: input
+      device_class: temperature
+      precision: 1
+      scale: 0.1
+    - name: "Нагреватель"
+      unit_of_measurement: "%"
+      slave: 1
+      address: 4
+      input_type: input
+    - name: "Температура на улице"
+      unit_of_measurement: °C
+      slave: 1
+      address: 9
+      input_type: input
+      device_class: temperature
+      precision: 1
+      scale: 0.1
+    - name: "satellite_target_fs1"
+      slave: 1
+      address: 280
+      input_type: holding
+    - name: "satellite_target_fs2"
+      slave: 1
+      address: 281
+      input_type: holding
+    - name: "satellite_target_fs3"
+      slave: 1
+      address: 282
+      input_type: holding
+    - name: "satellite_target_temp"
+      slave: 1
+      address: 1
+      input_type: holding
+    - name: "satellite_target_fanmode"
+      slave: 1
+      address: 0
+      input_type: holding
