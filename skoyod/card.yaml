@@ -1,0 +1,88 @@
+type: grid
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: gauge
+        entity: sensor.exhaust_fan_speed
+        min: 0
+        max: 3500
+        severity:
+          green: 0
+          yellow: 1200
+          red: 1800
+        needle: true
+        unit: RPM
+        name: Вытяжка
+      - type: gauge
+        entity: sensor.fresh_air_fan_speed
+        min: 0
+        max: 3500
+        needle: true
+        severity:
+          green: 0
+          yellow: 1200
+          red: 1800
+        unit: RPM
+        name: Приточка
+  - square: false
+    type: grid
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: vertical-stack
+            cards:
+              - type: entities
+                entities:
+                  - entity: switch.avtomaticheskaia_skorost
+                    icon: mdi:fan-auto
+                  - entity: input_number.satellite_target_fanspeed
+          - show_name: true
+            show_icon: false
+            show_state: true
+            type: glance
+            entities:
+              - entity: sensor.co2
+                name: CO₂
+                icon: mdi:molecule-co2
+              - entity: sensor.voc
+                icon: mdi:molecule
+              - entity: sensor.pm2_5
+                icon: mdi:weather-dust
+              - entity: sensor.formaldegid
+                name: CH₂O
+                icon: mdi:bottle-tonic-skull
+              - entity: sensor.vlazhnost_vytiazhki
+                name: Влажность
+                icon: mdi:water-percent
+            state_color: false
+          - type: horizontal-stack
+            cards:
+              - show_name: true
+                show_icon: true
+                type: button
+                entity: switch.rezhim_rekuperatsii
+                name: Рекуперация
+              - show_name: true
+                show_icon: true
+                type: button
+                entity: switch.rezhim_podmesa_vozdukha
+                name: Подмес
+              - show_name: true
+                show_icon: true
+                type: button
+                entity: switch.rezhim_pritochki
+                name: Приточка
+              - show_name: true
+                show_icon: true
+                type: button
+                entity: switch.rezhim_vytiazhki
+                name: Вытяжка
+    grid_options:
+      columns: full
+    columns: 1
+  - type: history-graph
+    entities:
+      - entity: sensor.temperatura_pritochki
+      - entity: sensor.temperatura_vytiazhki
+    hours_to_show: 24
+column_span: 1
