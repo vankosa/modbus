@@ -1,0 +1,6 @@
+satellite_target_fanspeed:
+  name: Ручной выбор скорости
+  min: 1
+  max: 6
+  step: 1
+  icon: mdi:fan
