@@ -1,0 +1,22 @@
+modbus:
+  automation:
+    - alias: Скорость вентиляторов
+      trigger:
+        platform: state
+        entity_id: input_number.satellite_target_fanspeed
+      action:
+        - service: modbus.write_register
+          data:
+            hub: SKOYOD
+            unit: 1
+            address: 4
+            value: "{{ states('input_number.satellite_target_fanspeed')|int }}"
+    - alias: Выбор скорости вентиляторов
+      trigger:
+        platform: state
+        entity_id: sensor.satellite_target_fanspeed
+      action:
+        - service: input_number.set_value
+          data:
+            entity_id: input_number.satellite_target_fanspeed
+            value: "{{ states('sensor.satellite_target_fanspeed')|int }}"
