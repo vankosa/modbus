@@ -1,0 +1,102 @@
+modbus:
+  automation:
+    - alias: Satellite set fan speed 1
+      trigger:
+        platform: state
+        entity_id: input_number.satellite_target_fs1
+      action:
+        - service: modbus.write_register
+          data:
+            hub: Nova
+            unit: 1
+            address: 280
+            value: "{{ states('input_number.satellite_target_fs1')|int }}"
+    - alias: Satellite select fs-select option 1
+      trigger:
+        platform: state
+        entity_id: sensor.satellite_target_fs1
+      action:
+        - service: input_number.set_value
+          data:
+            entity_id: input_number.satellite_target_fs1
+            value: "{{ states('sensor.satellite_target_fs1')|int }}"
+    - alias: Satellite set fan speed 2
+      trigger:
+        platform: state
+        entity_id: input_number.satellite_target_fs2
+      action:
+        - service: modbus.write_register
+          data_template:
+            hub: Nova
+            unit: 1
+            address: 281
+            value: "{{ states('input_number.satellite_target_fs2')|int }}"
+    - alias: Satellite select fs-select option 2
+      trigger:
+        platform: state
+        entity_id: sensor.satellite_target_fs2
+      action:
+        - service: input_number.set_value
+          data_template:
+            entity_id: input_number.satellite_target_fs2
+            value: "{{ states('sensor.satellite_target_fs2')|int }}"
+    - alias: Satellite set fan speed 3
+      trigger:
+        platform: state
+        entity_id: input_number.satellite_target_fs3
+      action:
+        - service: modbus.write_register
+          data_template:
+            hub: Nova
+            unit: 1
+            address: 282
+            value: "{{ states('input_number.satellite_target_fs3')|int }}"
+    - alias: Satellite select fs-select option 3
+      trigger:
+        platform: state
+        entity_id: sensor.satellite_target_fs3
+      action:
+        - service: input_number.set_value
+          data_template:
+            entity_id: input_number.satellite_target_fs3
+            value: "{{ states('sensor.satellite_target_fs3')|int }}"
+    - alias: Выбор скорости
+      trigger:
+        platform: state
+        entity_id: input_number.satellite_target_fanmode
+      action:
+        - service: modbus.write_register
+          data:
+            hub: Nova
+            unit: 1
+            address: 0
+            value: "{{ states('input_number.satellite_target_fanmode')|int }}"
+    - alias: Satellite select fs-select option fanmode
+      trigger:
+        platform: state
+        entity_id: sensor.satellite_target_fanmode
+      action:
+        - service: input_number.set_value
+          data:
+            entity_id: input_number.satellite_target_fanmode
+            value: "{{ states('sensor.satellite_target_fanmode')|int }}"
+    - alias: Satellite set temp
+      trigger:
+        platform: state
+        entity_id: input_number.satellite_target_temp
+      action:
+        - service: modbus.write_register
+          data:
+            hub: Nova
+            unit: 1
+            address: 1
+            value: "{{ states('input_number.satellite_target_temp')|int }}"
+    - alias: Satellite select temp-select option
+      trigger:
+        platform: state
+        entity_id: sensor.satellite_target_temp
+      action:
+        - service: input_number.set_value
+          data_template:
+            entity_id: input_number.satellite_target_temp
+            value: "{{ states('sensor.satellite_target_temp')|int }}"
