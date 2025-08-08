@@ -1,0 +1,65 @@
+- type: udp
+  host: 10.0.0.1
+  port: 8899
+  name: "HISENSE"
+  climates:
+    - name: Кондиционер гостиная
+      slave: 2
+      address: 0001
+      input_type: input
+      target_temp_register: 0000
+      temp_step: 1
+      max_temp: 32
+      min_temp: 16
+      hvac_mode_register:
+        address: 0002
+        values:
+          state_fan_only: 00
+          state_heat: 01
+          state_cool: 02
+          state_dry: 03
+          state_auto: 04
+      fan_mode_register:
+        address: 0003
+        values:
+          state_fan_auto: 00
+          state_fan_high: 01
+          state_fan_low: 02
+          state_fan_middle: 03
+      hvac_onoff_coil: 0000
+      swing_mode_register:
+        address: 0004
+        values:
+          swing_mode_state_off: 0
+          swing_mode_state_both: 3
+    - name: Кондиционер кабинет
+      slave: 3
+      address: 0001
+      input_type: input
+      target_temp_register: 0000
+      temp_step: 1
+      max_temp: 32
+      min_temp: 16
+      hvac_mode_register:
+        address: 0002
+        values:
+          state_fan_only: 00
+          state_heat: 01
+          state_cool: 02
+          state_dry: 03
+          state_auto: 04
+      fan_mode_register:
+        address: 0003
+        values:
+          state_fan_auto: 00
+          state_fan_high: 01
+          state_fan_low: 02
+          state_fan_middle: 03
+      hvac_onoff_coil: 0000
+      swing_mode_register:
+        address: 0004
+        values:
+          swing_mode_state_off: 0
+          swing_mode_state_vertical: 1
+          swing_mode_state_horizontal: 2
+          swing_mode_state_both: 3
